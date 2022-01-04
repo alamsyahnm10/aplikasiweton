@@ -1,32 +1,15 @@
+import 'package:aplikasiweton/tambahdata.dart';
 import 'package:flutter/material.dart';
-import 'package:aplikasiweton/register.dart';
-import 'package:aplikasiweton/login.dart';
+import 'tambahdata.dart';
+import 'dashboard.dart';
+import 'lihatdata.dart';
 
-void main() {
-  runApp(MyApp());
-}
-
-class MyApp extends StatelessWidget {
-  // This widget is the root of your application.
+class MenuPage extends StatefulWidget {
   @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Aplikasi Weton',
-      theme: ThemeData(
-        primarySwatch: Colors.brown,
-        visualDensity: VisualDensity.adaptivePlatformDensity,
-      ),
-      home: MyHomePage(),
-    );
-  }
+  _MenuPageState createState() => _MenuPageState();
 }
 
-class MyHomePage extends StatefulWidget {
-  @override
-  _MyHomePageState createState() => _MyHomePageState();
-}
-
-class _MyHomePageState extends State<MyHomePage> {
+class _MenuPageState extends State<MenuPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -46,13 +29,9 @@ class _MyHomePageState extends State<MyHomePage> {
               Padding(
                 padding: const EdgeInsets.all(8.0),
                 child: Text(
-                  'Selamat Datang Di Aplikasi Weton',
-                  style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold,),
+                  'Silahkan Pilih Menu',
+                  style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold),
                 ),
-              ),
-              Image.asset(
-                'assets/images/sampul.png',
-                height: 300,
               ),
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
@@ -62,7 +41,7 @@ class _MyHomePageState extends State<MyHomePage> {
                     height: 50,
                     child: MaterialButton(
                       color: Colors.deepOrange[800],
-                      child: Text('Login',
+                      child: Text('Tambah Data',
                           style: TextStyle(
                               fontSize: 20,
                               fontWeight: FontWeight.bold,
@@ -71,7 +50,7 @@ class _MyHomePageState extends State<MyHomePage> {
                         Navigator.push(
                           context,
                           MaterialPageRoute(
-                            builder: (context) => Login(),
+                            builder: (context) => Tambahdata(),
                           ),
                         );
                         //Navigator.push(context, MaterialPageRoute(builder: (context)=>dashboard(),),);
@@ -88,8 +67,34 @@ class _MyHomePageState extends State<MyHomePage> {
                     width: 200,
                     height: 50,
                     child: MaterialButton(
-                      color: Colors.deepOrangeAccent[200],
-                      child: Text('Register',
+                      color: Colors.deepOrange[800],
+                      child: Text('Perhitungan Weton',
+                          style: TextStyle(
+                              fontSize: 16,
+                              fontWeight: FontWeight.bold,
+                              color: Colors.white)),
+                      onPressed: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => Dashboard(),
+                          ),
+                        );
+                      },
+                    ),
+                  ),
+                ],
+              ),
+              Padding(padding: const EdgeInsets.all(8.0),),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: <Widget>[
+                  Container(
+                    width: 200,
+                    height: 50,
+                    child: MaterialButton(
+                      color: Colors.deepOrange[800],
+                      child: Text('Lihat Data',
                           style: TextStyle(
                               fontSize: 20,
                               fontWeight: FontWeight.bold,
@@ -98,7 +103,7 @@ class _MyHomePageState extends State<MyHomePage> {
                         Navigator.push(
                           context,
                           MaterialPageRoute(
-                            builder: (context) => Register(),
+                            builder: (context) => Lihatdata(),
                           ),
                         );
                       },

@@ -1,28 +1,29 @@
 import 'dart:convert';
+import 'package:aplikasiweton/lihatdata.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:http/http.dart' as http;
-import 'login.dart';
+import 'lihatdata.dart';
 
-class Register extends StatefulWidget {
+class Tambahdata extends StatefulWidget {
   @override 
-  _RegisterState createState() => _RegisterState();
+  _TambahdataState createState() => _TambahdataState();
 }
 
-class _RegisterState extends State<Register> {
-  TextEditingController user = TextEditingController();
-  TextEditingController pass = TextEditingController();
+class _TambahdataState extends State<Tambahdata> {
+  TextEditingController nama = TextEditingController();
+  TextEditingController hari = TextEditingController();
 
-  Future register() async {
-    var url = "http://192.168.43.251/aplikasiweton/register.php";
+  Future tambahdata() async {
+    var url = "http://192.168.43.251/aplikasiweton/tambahdata.php";
     var response = await http.post(Uri.parse(url), body: {
-      "username": user.text,
-      "password": pass.text,
+      "nama": nama.text,
+      "hari": hari.text,
     });
     var data = json.decode(response.body);
     if (data == "Error"){
      Fluttertoast.showToast(
-        msg: "Username Telah Digunakan",
+        msg: "Tambah data gagal",
         toastLength: Toast.LENGTH_SHORT,
         gravity: ToastGravity.CENTER,
         timeInSecForIosWeb: 1,
@@ -32,7 +33,7 @@ class _RegisterState extends State<Register> {
     ); 
     } else {
       Fluttertoast.showToast(
-        msg: "Registrasi Berhasil",
+        msg: "Tambah data berhasil",
         toastLength: Toast.LENGTH_SHORT,
         gravity: ToastGravity.CENTER,
         timeInSecForIosWeb: 1,
@@ -48,7 +49,7 @@ class _RegisterState extends State<Register> {
     return Scaffold(
       appBar: AppBar(
         title: Text(
-          'Halaman Register',
+          'Halaman Data',
           style: TextStyle(fontWeight: FontWeight.bold),
         ),
       ),
@@ -62,37 +63,33 @@ class _RegisterState extends State<Register> {
               Padding(
                 padding: const EdgeInsets.all(8.0),
                 child: Text(
-                  'Register',
+                  'Masukkan Data Anda',
                   style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold),
                 ),
-              ),
-              Image.asset(
-                'assets/images/signup.png',
-                height: 200,
               ),
               Padding(
                 padding: const EdgeInsets.all(8.0),
                 child: TextField(
                   decoration: InputDecoration(
-                    labelText: 'Username',
+                    labelText: 'Nama',
                     prefixIcon: Icon(Icons.person),
                     border: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(8)),
                   ),
-                  controller: user,
+                  controller: nama,
                 ),
               ),
               Padding(
                 padding: const EdgeInsets.all(8.0),
                 child: TextField(
-                  obscureText: true,
+                  //obscureText: true,
                   decoration: InputDecoration(
-                    labelText: 'Password',
-                    prefixIcon: Icon(Icons.lock),
+                    labelText: 'Hari Weton',
+                    prefixIcon: Icon(Icons.calendar_today),
                     border: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(8)),
                   ),
-                  controller: pass,
+                  controller: hari,
                 ),
               ),
               Row(
@@ -103,23 +100,28 @@ class _RegisterState extends State<Register> {
                     height: 50,
                     child: MaterialButton(
                       color: Colors.deepOrange[800],
-                      child: Text('Register',
+                      child: Text('Simpan',
                           style: TextStyle(
                               fontSize: 20,
                               fontWeight: FontWeight.bold,
                               color: Colors.white)),
                       onPressed: () {
-                        register();
+                        tambahdata();
                       },
                     ),
                   ),
-                  Padding(padding: const EdgeInsets.all(8.0)),
+                ],
+              ),
+              Padding(padding: const EdgeInsets.all(8.0)),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: <Widget>[
                   Container(
                     width: 150,
                     height: 50,
                     child: MaterialButton(
                       color: Colors.deepOrangeAccent[200],
-                      child: Text('Login',
+                      child: Text('Lihat Data',
                           style: TextStyle(
                               fontSize: 20,
                               fontWeight: FontWeight.bold,
@@ -128,7 +130,7 @@ class _RegisterState extends State<Register> {
                         Navigator.push(
                           context,
                           MaterialPageRoute(
-                            builder: (context) => Login(),
+                            builder: (context) => Lihatdata(),
                           ),
                         );
                       },

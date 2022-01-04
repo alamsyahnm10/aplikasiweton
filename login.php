@@ -4,7 +4,7 @@
     $username = $_POST['username'];
     $password = $_POST['password'];
 
-    $sql = "SELECT * FROM login WHERE username = '".$username."' AND '".$password."'";
+    $sql = "SELECT * FROM login WHERE username = '".$username."' AND password = '".$password."'";
 
     $result = mysqli_query($db,$sql);
     $count = mysqli_num_rows($result);
