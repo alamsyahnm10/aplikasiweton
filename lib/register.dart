@@ -52,10 +52,8 @@ class _RegisterState extends State<Register> {
           style: TextStyle(fontWeight: FontWeight.bold),
         ),
       ),
+      backgroundColor: Colors.orangeAccent,
       body: Container(
-        height: 750,
-        child: Card(
-          color: Colors.orangeAccent,
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
@@ -138,7 +136,6 @@ class _RegisterState extends State<Register> {
               )
             ],
           ),
-        ),
       ),
     );
   }

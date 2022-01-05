@@ -44,10 +44,8 @@ class _DashboardState extends State<Dashboard> {
           style: TextStyle(fontWeight: FontWeight.bold),
         ),
       ),
+      backgroundColor: Colors.orangeAccent,
       body: Container(
-        height: 750,
-        child: Card(
-          color: Colors.orangeAccent,
           child: Column(
             children: <Widget>[
               Padding(
@@ -58,8 +56,12 @@ class _DashboardState extends State<Dashboard> {
                   style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold),
                 ),
               ),
+              Image.asset(
+                'assets/images/kitab.png',
+                height: 200,
+              ),
               Padding(
-                padding: const EdgeInsets.all(8.0),
+                padding: const EdgeInsets.all(5.0),
                 child: Text(
                   'Hari: Senin = 4 || Selasa = 3 || Rabu = 7 || Kamis = 8 || Jumat = 6 || Sabtu = 9 || Minggu || 5',
                   textAlign: TextAlign.center,
@@ -163,7 +165,6 @@ class _DashboardState extends State<Dashboard> {
               ),
             ],
           ),
-        ),
       ),
     );
   }

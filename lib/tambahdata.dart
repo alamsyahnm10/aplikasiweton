@@ -53,10 +53,8 @@ class _TambahdataState extends State<Tambahdata> {
           style: TextStyle(fontWeight: FontWeight.bold),
         ),
       ),
+      backgroundColor: Colors.orangeAccent,
       body: Container(
-        height: 750,
-        child: Card(
-          color: Colors.orangeAccent,
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
@@ -66,6 +64,10 @@ class _TambahdataState extends State<Tambahdata> {
                   'Masukkan Data Anda',
                   style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold),
                 ),
+              ),
+              Image.asset(
+                'assets/images/tambah.png',
+                height: 200,
               ),
               Padding(
                 padding: const EdgeInsets.all(8.0),
@@ -92,6 +94,7 @@ class _TambahdataState extends State<Tambahdata> {
                   controller: hari,
                 ),
               ),
+              Padding(padding: const EdgeInsets.all(8.0),),
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: <Widget>[
@@ -140,7 +143,6 @@ class _TambahdataState extends State<Tambahdata> {
               )
             ],
           ),
-        ),
       ),
     );
   }

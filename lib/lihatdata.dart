@@ -75,7 +75,8 @@ class ItemList extends StatelessWidget {
               child: new ListTile(
                 title: new Text(list[i]['nama']),
                 leading: new Icon(Icons.widgets),
-                subtitle: new Text("Hari Weton: ${list[i]['hari']}"),
+                subtitle: new Text('Hari Weton: ${list[i]['hari']}\nNeptu: ${list[i]['neptu']}'),
+                
               ),
             ),
           ), 

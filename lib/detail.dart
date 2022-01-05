@@ -26,8 +26,8 @@ class _DetailState extends State<Detail> {
       content: new Text("Apakah Anda yakin ingin menghapus? '${widget.list[widget.index]['nama']}'"),
       actions: <Widget>[
         new RaisedButton(
-          child: new Text("Hapus", style: new TextStyle(color: Colors.black),),
-          color: Colors.red,
+          child: new Text("Hapus", style: new TextStyle(color: Colors.white),),
+          color: Colors.deepOrange[800],
           onPressed: (){
             deleteData();
             Navigator.of(context).push(
@@ -38,8 +38,8 @@ class _DetailState extends State<Detail> {
           },
         ),
         new RaisedButton(
-          child: new Text("Batal", style: new TextStyle(color: Colors.black),),
-          color: Colors.green,
+          child: new Text("Batal", style: new TextStyle(color: Colors.white),),
+          color: Colors.deepOrangeAccent[200],
           onPressed: ()=> Navigator.pop(context),
         ),
       ],
@@ -62,7 +62,7 @@ class _DetailState extends State<Detail> {
               children: <Widget>[
                 new Padding(padding: const EdgeInsets.only(top: 30.0),),
                 new Text(widget.list[widget.index]['nama'], style: new TextStyle(fontSize: 20.0),),
-                new Text("Hari Weton: ${widget.list[widget.index]['hari']}", style: new TextStyle(fontSize: 18.0),),
+                new Text('Hari Weton: ${widget.list[widget.index]['hari']}\nNeptu: ${widget.list[widget.index]['neptu']}', style: new TextStyle(fontSize: 18.0), textAlign: TextAlign.center,),
                 new Padding(padding: const EdgeInsets.only(top: 30.0),),
 
                 new Row(

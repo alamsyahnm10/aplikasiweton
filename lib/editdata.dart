@@ -14,8 +14,9 @@ class EditData extends StatefulWidget {
 
 class _EditDataState extends State<EditData> {
 
- TextEditingController controllerNama = TextEditingController();
-  TextEditingController controllerHari = TextEditingController();
+ TextEditingController controllerNama = TextEditingController();  
+ TextEditingController controllerHari = TextEditingController();
+ TextEditingController controllerNeptu = TextEditingController();
 
   void editData() {
     var url = "http://192.168.43.251/aplikasiweton/editdata.php";
@@ -23,6 +24,7 @@ class _EditDataState extends State<EditData> {
       "id": widget.list[widget.index]['id'],
       "nama": controllerNama.text,
       "hari": controllerHari.text,
+      "neptu": controllerNeptu.text,
     });
   }
 
@@ -31,14 +33,16 @@ class _EditDataState extends State<EditData> {
     void initState() {
       controllerNama= new TextEditingController(text: widget.list[widget.index]['nama'] );
       controllerHari= new TextEditingController(text: widget.list[widget.index]['hari'] );
+      controllerNeptu= new TextEditingController(text: widget.list[widget.index]['neptu'] );
     }
 
   @override
   Widget build(BuildContext context) {
     return new Scaffold(
       appBar: new AppBar(
-        title: new Text("EDIT DATA"),
+        title: new Text("Edit Data"),
       ),
+      backgroundColor: Colors.orangeAccent,
       body: Padding(
         padding: const EdgeInsets.all(10.0),
         child: ListView(
@@ -55,12 +59,18 @@ class _EditDataState extends State<EditData> {
                   decoration: new InputDecoration(
                       hintText: "Hari", labelText: "Hari"),
                 ),
+                new TextField(
+                  controller: controllerNeptu,
+                  decoration: new InputDecoration(
+                      hintText: "Neptu", labelText: "Neptu"),
+                ),
                 new Padding(
                   padding: const EdgeInsets.all(10.0),
                 ),
                 new RaisedButton(
                   child: new Text("EDIT DATA"),
-                  color: Colors.blueAccent,
+                  textColor: Colors.white,
+                  color: Colors.deepOrange[800],
                   onPressed: () {
                     editData();
                     Navigator.of(context).push(
